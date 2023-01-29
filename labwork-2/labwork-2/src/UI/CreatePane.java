@@ -219,6 +219,9 @@ public class CreatePane extends javax.swing.JPanel {
         if(strProductName.trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Enter your Name");
             return ;
+        }else if(!strProductName.matches("[A-Za-z]*")){
+            JOptionPane.showMessageDialog(null, "Product name consists of letters ");
+            return ;
         }
         
         String strProductPrice = productPrice.getText();

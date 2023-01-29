@@ -31,9 +31,7 @@ public class UpdatePane extends javax.swing.JPanel {
     public void displayPackageDetails(){
         packageID.setText(deliveryPackage.getPackageID()+"");
         packageWeight.setText(deliveryPackage.getPackageWeight() + "");
-//        productID.setText(deliveryPackage.getProduct().getProductID() + "");
-//        productName.setText(""+ deliveryPackage.getProduct().getProductName());
-//        productPrice.setText(""+ deliveryPackage.getProduct().getPrice());
+
         customerID.setText(""+ deliveryPackage.getCustomer().getCustomerID());
         customerName.setText(deliveryPackage.getCustomer().getFullName());
         
@@ -83,6 +81,12 @@ public class UpdatePane extends javax.swing.JPanel {
         });
         add(productName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 110, 30));
         add(productPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 110, 30));
+
+        customerName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                customerNameFocusLost(evt);
+            }
+        });
         add(customerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 110, 30));
         add(customerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 110, 30));
 
@@ -242,6 +246,9 @@ public class UpdatePane extends javax.swing.JPanel {
         if(strProductName.trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Enter your Name");
             return ;
+        }else if(!strProductName.matches("[A-Za-z]*")){
+            JOptionPane.showMessageDialog(null, "Product name consists of letters ");
+            return ;
         }
         
         String strProductPrice = productPrice.getText();
@@ -290,6 +297,11 @@ public class UpdatePane extends javax.swing.JPanel {
 //            }
 //        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void customerNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_customerNameFocusLost
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_customerNameFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
